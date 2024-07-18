@@ -1,0 +1,119 @@
+﻿@using VehicleRentalProject.Web.Models.ViewModels.Vehicle;
+@model ListVehicleViewModel
+
+@{
+    ViewData["Title"] = "List of Vehicles";
+}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">List of Vehicles</li>
+        </ol>
+    </nav>
+    
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">List of Vehicles</h5>
+            <h5 class="card-title"><a asp-action="Create" class="btn btn-success">Add new Vehicle</a></h5>
+            <form method="get" action="">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="searchingText" placeholder="Search by vehicle name" value="@Model.SearchingText">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Vehicle Name</th>
+                        <th>Vehicle Type</th>
+                        <th>Vehicle Model</th>
+                        <th>Vehicle Number</th>
+                        <th>Vehicle Color</th>
+                        <th>Vehicle Description</th>
+                        <th>Vehicle Image</th>
+                        <th></th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.VehicleList.Any())
+                    {
+                        foreach (var vehicle in Model.VehicleList)
+                        {
+                            <tr>
+                                <td>@vehicle.Id</td>
+                                <td>@vehicle.VehicleName</td>
+                                <td>@vehicle.VehicleType</td>
+                                <td>@vehicle.VehicleModel</td>
+                                <td>@vehicle.VehicleNumber</td>
+                                <td>@vehicle.VehicleColor</td>
+                                <td>@vehicle.VehicleDescription</td>
+                                <td><img src="@vehicle.VehicleImage" width="32" height="32"/></td>
+                               <td>
+                                    <a asp-action="Edit" asp-route-Id="@vehicle.Id"><i class="bi bi-pencil-square"></i></a>
+                                    <a asp-action="Details" asp-route-Id="@vehicle.Id"><i class="bi bi-ticket-detailed"></i></a>
+                                    <a asp-action="Delete" asp-route-Id="@vehicle.Id"><i class="bi bi-trash3-fill"></i></a>
+                               </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="11" class="text-center">No vehicles found.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (Model.PageInfo.TotalPages > 1)
+            {
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        @if (Model.PageInfo.HasPreviousPage)
+                        {
+                            <li class="page-item"><a class="page-link" href="?page=@(Model.PageInfo.CurrentPage - 1)&searchingText=@Model.SearchingText">Previous</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                        }
+
+                             @for (int i = 1; i <= Model.PageInfo.TotalPages; i++)
+                              {
+                            if (i == Model.PageInfo.CurrentPage)
+                            {
+                                <li class="page-item active"><span class="page-link">@i</span></li>
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=@i&searchingText=@Model.SearchingText">@i</a>
+                                </li>
+                            }
+                        }
+
+                        @if (Model.PageInfo.HasNextPage)
+                        {
+                            <li class="page-item"><a class="page-link" href="?page=@(Model.PageInfo.CurrentPage + 1)&searchingText=@Model.SearchingText">Next</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item disabled"><span class="page-link">Next</span></li>
+                        }
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+</div>
+
+
+

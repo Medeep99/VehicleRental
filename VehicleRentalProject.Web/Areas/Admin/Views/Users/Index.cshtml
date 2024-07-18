@@ -1,0 +1,60 @@
+﻿@model List<UserViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Users</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User Id
+            </th>
+            <th>
+                User Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+               
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.UserId">Details</a>
+                    @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
+                    {
+                        <a class="btn btn-success text-white" asp-action="Lock" asp-route-id="@item.UserId">
+                            <i class="fas fa-lock-open"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger text-white" asp-action="UnLock" asp-route-id="@item.UserId">
+                            <i class="fas fa-lock"></i>
+                        </a>
+                    }
+
+
+@*                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

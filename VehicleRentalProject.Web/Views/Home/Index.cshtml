@@ -1,0 +1,19 @@
+﻿@model IEnumerable<VehicleRentalProject.Web.Models.ViewModels.Vehicle.VehicleViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row pb-4">
+    @foreach(var item in @Model)
+    {
+        <div class="card m-1" style="width: 18rem;">
+  <img class="card-img-top" src="@item.VehicleImage" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">@item.VehicleName</h5>
+    <p class="card-text">Daily Price: @item.DailyRate.ToString("0.0") USD</p>
+                <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+  </div>
+</div>
+    }
+
+</div>
+

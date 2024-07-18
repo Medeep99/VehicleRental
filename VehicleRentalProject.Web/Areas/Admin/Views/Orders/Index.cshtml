@@ -1,0 +1,66 @@
+﻿@model IEnumerable<VehicleRentalProject.Models.OrderHeader>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a asp-action="Index" class="btn btn-primary" asp-route-orderStatus="pending">Pending</a>
+<a asp-action="Index" class="btn btn-secondary" asp-route-orderStatus="inProcess">InProcess</a>
+<a asp-action="Index" class="btn btn-success" asp-route-orderStatus="approved">Approved</a>
+<a asp-action="Index" class="btn btn-info" asp-route-orderStatus="shipped">Shipped</a>
+<a asp-action="Index" class="btn btn-warning" asp-route-orderStatus="">All</a>
+
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfOrder)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.OrderTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentStatus)
+            </th>
+            
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+               Click to Details
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfOrder)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentStatus)
+            </td>           
+            
+          
+            <td>
+               
+               <a asp-route-id="@item.Id" asp-action="Details" asp-area="Admin" asp-controller="Orders">Details</a>
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

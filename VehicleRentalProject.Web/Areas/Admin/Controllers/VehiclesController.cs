@@ -19,16 +19,15 @@ namespace VehicleRentalProject.Web.Areas.Admin.Controllers
             _mapper = mapper;
         }
 
-        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10, string SearchingText = null)
+        public async Task<IActionResult> Index (string SearchingText,int pageNumber = 1, int pageSize = 10)
         {
-
             IEnumerable<VehicleViewModel> viewModelList;
             var vehicles = _vehicleRepository.GetVehicles().GetAwaiter()
                 .GetResult().Skip(pageNumber * pageSize - pageSize).Take(pageSize);
             viewModelList = _mapper.Map<List<VehicleViewModel>>(vehicles);
             if (!string.IsNullOrEmpty(SearchingText))
             {
-                viewModelList = viewModelList.Where(x => x.VehicleNumber.Equals(SearchingText)).ToList();
+                viewModelList = viewModelList.Where(x => x.VehicleName.Equals(SearchingText)).ToList();
             }
             var vehicleViewModel = new ListVehicleViewModel
             {

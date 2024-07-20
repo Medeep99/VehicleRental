@@ -204,7 +204,7 @@
                  @if (User.IsInRole(FD.Admin_Role))
                 {
                     <div class="row mb-3">
-                        <a asp-action="UpdateUserDetail" asp-route-userId="@Model.OrderHeader.ApplicationUserId"  class="btn btn-primary">Update User Detailed</a>
+                        <a asp-action="UpdateUserDetail" asp-route-userId="@Model.OrderHeader.ApplicationUserId"  class="btn btn-primary">Update User Details</a>
                 </div>
                  }
             </div>
@@ -232,7 +232,7 @@
                                     <div>
                                         <strong>Total amount &nbsp;<span class="text-end">@Model.OrderHeader.OrderTotal </span></strong>
                                         <strong>
-                                            INR
+                                            USD
                                         </strong>
                                     </div>
                                     <span><strong></strong></span>
@@ -243,7 +243,8 @@
                         {
                             if (Model.OrderHeader.OrderStatus ==GlobalConfiguration.StatusApproved)
                             {
-                                <button asp-action="InProcess" type="submit" class="btn btn-info btn-lg btn-block mb-2">
+          
+                                <button type="submit" class="btn btn-info btn-lg btn-block mb-2" onclick="return alert(`Your Order Is being Processed`)">
                                     Start Processing
                                 </button>
                             }

@@ -16,21 +16,10 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white
                    border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="https://seeklogo.com/images/L/line-art-car-logo-99DBB62CB3-seeklogo.com.png"
-                    width="50" height="50"/>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Rental Request</a>
                         </li>
                         @if(User.IsInRole("Customer"))
                         {
@@ -46,20 +35,15 @@
                         }
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark" href="#"
-                                   id="navbarDropDown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    CMS
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropDown">
-                                    <a class="dropdown-item text-dark" asp-area="Admin" asp-controller="Vehicles" asp-action="Index">Vehicles</a>
-                                    <a class="dropdown-item text-dark" asp-area="admin" asp-controller="orders" asp-action="index">Your Orders</a>
-                                    <a class="dropdown-item text-dark" asp-area="admin" asp-controller="Users" asp-action="index">Users</a>
-                          
-                                    
-                                   
-
-                                </div>
+                    
+                              <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Vehicles" asp-action="Index">Vehicles List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Orders" asp-action="Index">Order Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Users" asp-action="Index">Users List</a>
                             </li>
                         }
                        
@@ -80,7 +64,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - VehicleRentalProject.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            Contact Us: 01-5544662
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

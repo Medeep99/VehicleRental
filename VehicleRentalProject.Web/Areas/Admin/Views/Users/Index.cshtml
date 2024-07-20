@@ -34,26 +34,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
-               
-                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.UserId">Details</a>
-                    @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
-                    {
-                        <a class="btn btn-success text-white" asp-action="Lock" asp-route-id="@item.UserId">
-                            <i class="fas fa-lock-open"></i>
-                        </a>
-                    }
-                    else
-                    {
-                        <a class="btn btn-danger text-white" asp-action="UnLock" asp-route-id="@item.UserId">
-                            <i class="fas fa-lock"></i>
-                        </a>
-                    }
+    @*            <td>
+
+            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.UserId">Details</a>
+            @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
+            {
+            <a class="btn btn-success text-white" asp-action="Lock" asp-route-id="@item.UserId">
+            <i class="fas fa-lock-open"></i>
+            </a>
+            }
+            else
+            {
+            <a class="btn btn-danger text-white" asp-action="UnLock" asp-route-id="@item.UserId">
+            <i class="fas fa-lock"></i>
+            </a>
+            }
 
 
-@*                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-            </td>
+            @Html.ActionLink("Details", "Details", new {  id=item.PrimaryKey  })
+            @Html.ActionLink("Delete", "Delete", new {  id=item.PrimaryKey  })
+            </td>*@
         </tr>
 }
     </tbody>

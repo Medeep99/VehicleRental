@@ -34,7 +34,7 @@ namespace VehicleRentalProject.Repositories
         public CarContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<CarContext>();
-            optionsBuilder.UseSqlServer("Server=MOISES;Database=VehicleDB;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Server=SA;Database=VehicleDB;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true");
 
             return new CarContext(optionsBuilder.Options);
         }

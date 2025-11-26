@@ -43,14 +43,14 @@ Clean and intuitive UI
 
 # Technologies Used
 
-ASP.NET MVC =	Application framework
-C#	= Backend development
-Entity Framework	ORM = database operations
-MS SQL = Server	Database
-Stripe API =	Secure payment integration
-HTML, CSS, Bootstrap	= Frontend layout and styling
-LINQ =	Data querying
-Razor Views =	UI rendering
+- ASP.NET MVC =	Application framework
+- C#	= Backend development
+- Entity Framework	ORM = database operations
+- MS SQL = Server	Database
+- Stripe API =	Secure payment integration
+- HTML, CSS, Bootstrap	= Frontend layout and styling
+- LINQ =	Data querying
+- Razor Views =	UI rendering
 
 # Contribution
 
